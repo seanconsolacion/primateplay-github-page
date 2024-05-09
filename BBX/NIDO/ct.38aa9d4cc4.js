@@ -4010,8 +4010,7 @@ if (!this.kill) {
       
     },
     afterDraw() {
-      keyboard.clear();
-for (const p of pointer.down) {
+      for (const p of pointer.down) {
     p.xprev = p.x;
     p.yprev = p.y;
     p.xuiprev = p.x;
@@ -4026,6 +4025,7 @@ for (const p of pointer.hover) {
 inputs.registry['pointer.Wheel'] = 0;
 pointer.clearReleased();
 pointer.xmovement = pointer.ymovement = 0;
+keyboard.clear();
 
       if (this.behaviors.length) {
         runBehaviors(this, "rooms", "thisOnDraw");
@@ -4054,7 +4054,7 @@ pointer.xmovement = pointer.ymovement = 0;
      * The name of the starting room, as it was set in ct.IDE.
      * @type {string}
      */
-    starting: "Detailer"
+    starting: "Mechanics"
   };
   var rooms_default = roomsLib;
 
