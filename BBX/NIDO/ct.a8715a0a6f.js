@@ -4010,7 +4010,8 @@ if (!this.kill) {
       
     },
     afterDraw() {
-      for (const p of pointer.down) {
+      keyboard.clear();
+for (const p of pointer.down) {
     p.xprev = p.x;
     p.yprev = p.y;
     p.xuiprev = p.x;
@@ -4025,7 +4026,6 @@ for (const p of pointer.hover) {
 inputs.registry['pointer.Wheel'] = 0;
 pointer.clearReleased();
 pointer.xmovement = pointer.ymovement = 0;
-keyboard.clear();
 
       if (this.behaviors.length) {
         runBehaviors(this, "rooms", "thisOnDraw");
@@ -4054,7 +4054,7 @@ keyboard.clear();
      * The name of the starting room, as it was set in ct.IDE.
      * @type {string}
      */
-    starting: "Mechanics"
+    starting: "Detailer"
   };
   var rooms_default = roomsLib;
 
@@ -5986,6 +5986,34 @@ if (pointer.collides(this) && !this.getRoom().pressed && !this.getRoom().scrolli
 };
 templates.list['Black_dup'] = [];
         
+templates.templates["Black_Filler"] = {
+    name: "Black_Filler",
+    depth: 56,
+    blendMode: PIXI.BLEND_MODES.NORMAL,
+    visible: true,
+    baseClass: "AnimatedSprite",
+    
+            texture: "Black",
+        animationFPS: 30,
+        playAnimationOnStart: false,
+        loopAnimation: true,
+    behaviors: JSON.parse('[]'),
+    onStep: function () {
+        
+    },
+    onDraw: function () {
+        
+    },
+    onDestroy: function () {
+        
+    },
+    onCreate: function () {
+        
+    },
+    extends: {}
+};
+templates.list['Black_Filler'] = [];
+        
     
     
 rooms.templates['Game'] = {
@@ -5993,7 +6021,7 @@ rooms.templates['Game'] = {
     width: 720,
     height: 1280,
     behaviors: JSON.parse('[]'),
-    objects: JSON.parse('[{"x":360,"y":640,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"bg"},{"x":360,"y":1000,"opacity":1,"tint":16777215,"scale":{"x":0.65,"y":0.65},"rotation":0,"exts":{},"customProperties":{},"template":"landscape"},{"x":186,"y":897.5,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Character"}]'),
+    objects: JSON.parse('[{"x":360,"y":640,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"bg"},{"x":360,"y":1000,"opacity":1,"tint":16777215,"scale":{"x":0.65,"y":0.65},"rotation":0,"exts":{},"customProperties":{},"template":"landscape"},{"x":186,"y":897.5,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Character"},{"x":-64,"y":-448,"opacity":1,"tint":16777215,"scale":{"x":13,"y":7},"rotation":0,"exts":{},"customProperties":{},"template":"Black_Filler"},{"x":-64,"y":1280,"opacity":1,"tint":16777215,"scale":{"x":13,"y":7},"rotation":0,"exts":{},"customProperties":{},"template":"Black_Filler"}]'),
     bgs: JSON.parse('[{"texture":"BG","depth":10,"exts":{"movementX":0,"movementY":0,"parallaxX":1,"parallaxY":1,"repeat":"no-repeat","scaleX":0.46,"scaleY":0.46,"shiftX":0,"shiftY":0}}]'),
     tiles: JSON.parse('[]'),
     backgroundColor: '#212121',
@@ -6166,7 +6194,7 @@ rooms.templates['Detailer'] = {
     width: 720,
     height: 1280,
     behaviors: JSON.parse('[]'),
-    objects: JSON.parse('[{"x":362,"y":709,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Detailer"},{"x":-64,"y":-256,"opacity":0,"tint":16777215,"scale":{"x":13,"y":7.24515509},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":684.08917302,"y":-256,"opacity":0,"tint":16777215,"scale":{"x":1.31110667,"y":23},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":-64,"y":-256,"opacity":0,"tint":16777215,"scale":{"x":1.62939453,"y":23},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":-64,"y":1216,"opacity":0,"tint":16777215,"scale":{"x":13,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":360,"y":640,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Mask"},{"x":360,"y":96,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Logo"}]'),
+    objects: JSON.parse('[{"x":362,"y":709,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Detailer"},{"x":-64,"y":-256,"opacity":0,"tint":16777215,"scale":{"x":13,"y":7.24515509},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":684.08917302,"y":-256,"opacity":0,"tint":16777215,"scale":{"x":1.31110667,"y":23},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":-64,"y":-256,"opacity":0,"tint":16777215,"scale":{"x":1.62939453,"y":23},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":-64,"y":1216,"opacity":0,"tint":16777215,"scale":{"x":13,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":360,"y":640,"opacity":1,"tint":"#000000","scale":{"x":1.1,"y":1.1},"rotation":0,"exts":{},"customProperties":{},"template":"Mask"},{"x":360,"y":96,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Logo"},{"x":360,"y":640,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Mask"},{"x":-64,"y":-512,"opacity":1,"tint":16777215,"scale":{"x":13,"y":7},"rotation":0,"exts":{},"customProperties":{},"template":"Black_Filler"},{"x":-64,"y":1344,"opacity":1,"tint":16777215,"scale":{"x":13,"y":7},"rotation":0,"exts":{},"customProperties":{},"template":"Black_Filler"}]'),
     bgs: JSON.parse('[]'),
     tiles: JSON.parse('[]'),
     backgroundColor: '#212121',
