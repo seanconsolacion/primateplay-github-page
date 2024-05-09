@@ -970,10 +970,10 @@
           loadingBar.style.width = percents + "%";
         };
         const atlases = [
-          ["./img/a0.{webp,png}.5f5b9836ae.json","./img/a1.{webp,png}.85914da8b2.json","./img/a2.{webp,png}.a30001077e.json","./img/a3.{webp,png}.0da108a5cb.json","./img/a4.{webp,png}.9bb0a92527.json"]
+          ["./img/a0.{webp,png}.c593c42ebf.json","./img/a1.{webp,png}.789c555d03.json"]
         ][0];
         const tiledImages = [
-          {"NESTO_GAME_MECHANICS_LIGHTBOX":{"source":"./img/t0.e8e848ae46.{webp,png}","shape":{"type":"rect","top":639,"bottom":640,"left":359,"right":360},"anchor":{"x":0.4993045897079277,"y":0.49960906958561374}}}
+          {"NNI_MECHANICS_LIGHTBOX":{"source":"./img/t0.089a208919.{webp,png}","shape":{"type":"rect","top":639,"bottom":640,"left":359,"right":360},"anchor":{"x":0.4993045897079277,"y":0.49960906958561374}}}
         ][0];
         const bitmapFonts = [
           {"Trade Gothic LT Bold_400":"qcb9tjtrQNm7H4.xml","Geist-Regular_400":"BdNGWmNGgrKJNN.xml","Ridley Grotesk Bold_400":"5n8W6R95fPfwNn.xml"}
@@ -4054,7 +4054,7 @@ keyboard.clear();
      * The name of the starting room, as it was set in ct.IDE.
      * @type {string}
      */
-    starting: "Mechanic"
+    starting: "Mechanics"
   };
   var rooms_default = roomsLib;
 
@@ -4770,7 +4770,7 @@ keyboard.clear();
     deadPool.length = 0;
   }, 1e3 * 60);
   var meta = [
-    {"name":"NESTO","author":"PrimatePlay Studio","site":"","version":"0.0.0"}
+    {"name":"NNI","author":"PrimatePlay Studio","site":"","version":"0.0.0"}
   ][0];
   var currentViewMode = "scaleFill";
   var currentHighDPIMode = Boolean([
@@ -5029,11 +5029,13 @@ styles.new(
     "Geist-Regular",
     {
     "fontFamily": "\"CTPROJFONTGeist-Regular\", \"Geist-Regular\", sans-serif",
-    "fontSize": 24,
+    "fontSize": 20,
     "fontStyle": "normal",
     "fontWeight": "400",
+    "align": "center",
     "lineJoin": "round",
-    "lineHeight": 32.400000000000006
+    "lineHeight": 27,
+    "fill": "#FFFFFF"
 });
 
 styles.new(
@@ -5078,13 +5080,26 @@ styles.new(
     "RG-Bold_Green",
     {
     "fontFamily": "\"CTPROJFONTRidley Grotesk Bold\", \"Ridley Grotesk Bold\", sans-serif",
-    "fontSize": 32,
+    "fontSize": 24,
     "fontStyle": "normal",
     "fontWeight": "400",
     "align": "center",
     "lineJoin": "round",
-    "lineHeight": 43.2,
+    "lineHeight": 32.400000000000006,
     "fill": "#46AF5F"
+});
+
+styles.new(
+    "RG-Bold_Blue",
+    {
+    "fontFamily": "\"CTPROJFONTRidley Grotesk Bold\", \"Ridley Grotesk Bold\", sans-serif",
+    "fontSize": 24,
+    "fontStyle": "normal",
+    "fontWeight": "400",
+    "align": "center",
+    "lineJoin": "round",
+    "lineHeight": 32.400000000000006,
+    "fill": "#153B90"
 });
 
 styles.new(
@@ -5114,6 +5129,19 @@ styles.new(
 });
 
 styles.new(
+    "RG-Bold_BigLetter",
+    {
+    "fontFamily": "\"CTPROJFONTRidley Grotesk Bold\", \"Ridley Grotesk Bold\", sans-serif",
+    "fontSize": 175,
+    "fontStyle": "normal",
+    "fontWeight": "400",
+    "align": "center",
+    "lineJoin": "round",
+    "lineHeight": 236.25000000000003,
+    "fill": "#FFFFFF"
+});
+
+styles.new(
     "Geist-Regular_Blue",
     {
     "fontFamily": "\"CTPROJFONTGeist-Regular\", \"Geist-Regular\", sans-serif",
@@ -5128,200 +5156,9 @@ styles.new(
 
     
     
-templates.templates["Div"] = {
-    name: "Div",
-    depth: 0,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "DETAILER_DIVIDER_LINE",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['Div'] = [];
-        
-templates.templates["Detailer"] = {
-    name: "Detailer",
-    depth: 51,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "NAN_OPTIPRO_DETAILER_CARD_MOCKUP",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        /* template Detailer — core_OnDraw (On frame end event) */
-{
-if(pointer.collides(this))
-{
-    if(this.offset == 0)
-    {
-        this.offset = this.getRoom().scrollParent.position.y - pointer.y;
-    }
-
-    this.getRoom().scrollParent.position.y = Math.min(Math.max(pointer.y + this.offset, this.getRoom().minY), this.getRoom().maxY);
-    this.getRoom().scrolling = true;
-}
-
-if(pointer.released[0])
-{
-    this.getRoom().scrolling = false;
-    this.offset = 0;
-}
-}
-
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        /* template Detailer — core_OnCreate (On create event) */
-{
-this.offset = 0;
-}
-
-    },
-    extends: {}
-};
-templates.list['Detailer'] = [];
-        
-templates.templates["Detailer1"] = {
-    name: "Detailer1",
-    depth: 0,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "NTO_DETAILER_VISUAL_1-BRAIN-Learn_and_develop",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['Detailer1'] = [];
-        
-templates.templates["Detailer2"] = {
-    name: "Detailer2",
-    depth: 0,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "NTO_DETAILER_VISUAL_2-BODY-Develop_a_stronger",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['Detailer2'] = [];
-        
-templates.templates["Detailer3"] = {
-    name: "Detailer3",
-    depth: 0,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "NTO_DETAILER_VISUAL_3-ENERGY-give_enough_energy",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['Detailer3'] = [];
-        
-templates.templates["NESTOLogo"] = {
-    name: "NESTOLogo",
-    depth: 0,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "NTO_LOGO",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['NESTOLogo'] = [];
-        
 templates.templates["Logo"] = {
     name: "Logo",
-    depth: 55,
+    depth: 0,
     blendMode: PIXI.BLEND_MODES.NORMAL,
     visible: true,
     baseClass: "AnimatedSprite",
@@ -5347,20 +5184,110 @@ templates.templates["Logo"] = {
 };
 templates.list['Logo'] = [];
         
-templates.templates["Black"] = {
-    name: "Black",
-    depth: 50,
+templates.templates["Detailer"] = {
+    name: "Detailer",
+    depth: 0,
     blendMode: PIXI.BLEND_MODES.NORMAL,
     visible: true,
     baseClass: "AnimatedSprite",
     
-            texture: "Black",
+            texture: "NAN_OPTIPRO_DETAILER_CARD_MOCKUP",
         animationFPS: 30,
         playAnimationOnStart: false,
         loopAnimation: true,
     behaviors: JSON.parse('[]'),
     onStep: function () {
         
+    },
+    onDraw: function () {
+        /* template Detailer — core_OnDraw (On frame end event) */
+{
+if(pointer.collides(this) && !this.pressed)
+{
+    this.pressed = true;
+    tween.add({
+        obj: this.getRoom(),
+        fields: {
+            alpha: 0
+        },
+        duration: 250,
+        silent: true
+    })
+    .then(() => {
+       rooms.switch('Game');
+    });
+}
+}
+
+    },
+    onDestroy: function () {
+        
+    },
+    onCreate: function () {
+        /* template Detailer — core_OnCreate (On create event) */
+{
+this.pressed = false;
+}
+
+    },
+    extends: {}
+};
+templates.list['Detailer'] = [];
+        
+templates.templates["White"] = {
+    name: "White",
+    depth: 0,
+    blendMode: PIXI.BLEND_MODES.NORMAL,
+    visible: true,
+    baseClass: "AnimatedSprite",
+    
+            texture: "WHITE_SQUARE-NNI_ACTIVITY-MSN_RESIDENTS_WORKSHOP",
+        animationFPS: 30,
+        playAnimationOnStart: false,
+        loopAnimation: true,
+    behaviors: JSON.parse('[]'),
+    onStep: function () {
+        /* template White — core_OnStep (On frame start event) */
+{
+this.move();
+}
+
+    },
+    onDraw: function () {
+        
+    },
+    onDestroy: function () {
+        
+    },
+    onCreate: function () {
+        /* template White — core_OnCreate (On create event) */
+{
+this.letter;
+}
+
+    },
+    extends: {}
+};
+templates.list['White'] = [];
+        
+templates.templates["Placeholder"] = {
+    name: "Placeholder",
+    depth: 0,
+    blendMode: PIXI.BLEND_MODES.NORMAL,
+    visible: true,
+    baseClass: "AnimatedSprite",
+    
+            texture: "Placeholder",
+        animationFPS: 30,
+        playAnimationOnStart: false,
+        loopAnimation: true,
+    behaviors: JSON.parse('[]'),
+    onStep: function () {
+        /* template Placeholder — core_OnStep (On frame start event) */
+{
+
+}
+
     },
     onDraw: function () {
         
@@ -5373,16 +5300,16 @@ templates.templates["Black"] = {
     },
     extends: {}
 };
-templates.list['Black'] = [];
+templates.list['Placeholder'] = [];
         
-templates.templates["GREEN_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP"] = {
-    name: "GREEN_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP",
-    depth: 3,
+templates.templates["Letter"] = {
+    name: "Letter",
+    depth: 0,
     blendMode: PIXI.BLEND_MODES.NORMAL,
     visible: true,
     baseClass: "AnimatedSprite",
     
-            texture: "GREEN_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP",
+            texture: "DARK_BLUE_SQUARE-NNI_ACTIVITY-MSN_RESIDENTS_WORKSHOP",
         animationFPS: 30,
         playAnimationOnStart: false,
         loopAnimation: true,
@@ -5397,235 +5324,84 @@ templates.templates["GREEN_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP"] = {
         
     },
     onCreate: function () {
-        /* template GREEN_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP — core_OnCreate (On create event) */
+        /* template Letter — core_OnCreate (On create event) */
 {
-this.count = 0;
-this.countText;
+this.letter;
+this.index;
+
+this.defX;
+this.defY;
+
+this.moved = false;
 }
-/* template GREEN_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP — core_OnPointerClick (OnPointerClick event) */
+/* template Letter — core_OnPointerClick (OnPointerClick event) */
 this.eventMode = 'dynamic';
 this.on('pointertap', () => {
     
-var card = this.getRoom().cards[this.getRoom().cards.length - 1];
-
-if(card.target == this)
+this.target = whites[progress][letterIndex];
+if(!this.moved && !movingBlocks)
 {
-    card.scale.x = card.scale.y = 0.5
-
+    this.depth = 5;
+    this.moved = true;
+    movingBlocks = true;
     tween.add({
-        obj: card,
-        fields:{
-            x: this.position.x,
-            y: this.position.y,
+        obj: this,
+        fields: {
+            x: this.target.position.x,
+            y: this.target.position.y
         },
-        duration: 100,
+        duration: 150,
         silent: true
     }).then(() =>{
-        card.depth = 0;
-        UpdateCards(this.getRoom(), card);
-    });
-}
-else
-{
-    var defAngle = card.angle;
-    var targetAngle = (defAngle > 300) ? defAngle + 5 : 5
-
-    tween.add({
-        obj: card,
-        fields:{
-            angle: targetAngle
-        },
-        duration: 50,
-        silent: true
-    }).then(() => {
-       tween.add({
-        obj: card,
-        fields:{
-            angle: defAngle
-        },
-        duration: 50,
-        silent: true
-        }) 
+        this.scale.x = this.scale.y = 0.15;
+        this.getRoom().placedLetter.push(this.letter);
+        this.index = letterIndex;
+        letterIndex++;
+        movingBlocks = false;
+        CheckAnswer(this.getRoom());
     });
 }
 
-});
-
-    },
-    extends: {}
-};
-templates.list['GREEN_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP'] = [];
-        
-templates.templates["ORANGE_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP"] = {
-    name: "ORANGE_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP",
-    depth: 3,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "ORANGE_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        /* template ORANGE_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP — core_OnCreate (On create event) */
+if(this.moved && !movingBlocks && this.index == (letterIndex - 1))
 {
-this.count = 0;
-this.countText;
-}
-/* template ORANGE_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP — core_OnPointerClick (OnPointerClick event) */
-this.eventMode = 'dynamic';
-this.on('pointertap', () => {
-    
-var card = this.getRoom().cards[this.getRoom().cards.length - 1];
-
-if(card.target == this)
-{
-    card.scale.x = card.scale.y = 0.5
-    
+    this.depth = 8;
+    movingBlocks = true;
     tween.add({
-        obj: card,
-        fields:{
-            x: this.position.x,
-            y: this.position.y
+        obj: this,
+        fields: {
+            x: this.defX,
+            y: this.defY
         },
-        duration: 100,
+        duration: 150,
         silent: true
     }).then(() =>{
-        card.depth = 0;
-        UpdateCards(this.getRoom(), card);
+        this.moved = false;
+        this.depth = 5;
+        this.scale.x = this.scale.y = 0.2;
+        this.getRoom().placedLetter.pop();
+        letterIndex--;
+        movingBlocks = false;
+        CheckAnswer(this.getRoom());
     });
 }
-else
-{
-    var defAngle = card.angle;
-    var targetAngle = (defAngle > 300) ? defAngle + 5 : 5
 
-    tween.add({
-        obj: card,
-        fields:{
-            angle: targetAngle
-        },
-        duration: 50,
-        silent: true
-    }).then(() => {
-       tween.add({
-        obj: card,
-        fields:{
-            angle: defAngle
-        },
-        duration: 50,
-        silent: true
-        }) 
-    });
-}
+
 
 });
 
     },
     extends: {}
 };
-templates.list['ORANGE_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP'] = [];
+templates.list['Letter'] = [];
         
-templates.templates["RED_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP"] = {
-    name: "RED_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP",
-    depth: 3,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "RED_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        /* template RED_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP — core_OnCreate (On create event) */
-{
-this.count = 0;
-this.countText;
-}
-/* template RED_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP — core_OnPointerClick (OnPointerClick event) */
-this.eventMode = 'dynamic';
-this.on('pointertap', () => {
-    
-var card = this.getRoom().cards[this.getRoom().cards.length - 1];
-
-if(card.target == this)
-{
-    card.scale.x = card.scale.y = 0.5
-    
-    tween.add({
-        obj: card,
-        fields:{
-            x: this.position.x,
-            y: this.position.y
-        },
-        duration: 100,
-        silent: true
-    }).then(() =>{
-        card.depth = 0;
-        UpdateCards(this.getRoom(), card);
-    });
-}
-else
-{
-    var defAngle = card.angle;
-    var targetAngle = (defAngle > 300) ? defAngle + 5 : 5
-
-    tween.add({
-        obj: card,
-        fields:{
-            angle: targetAngle
-        },
-        duration: 50,
-        silent: true
-    }).then(() => {
-       tween.add({
-        obj: card,
-        fields:{
-            angle: defAngle
-        },
-        duration: 50,
-        silent: true
-        }) 
-    });
-}
-
-});
-
-    },
-    extends: {}
-};
-templates.list['RED_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP'] = [];
-        
-templates.templates["Card"] = {
-    name: "Card",
+templates.templates["Divider"] = {
+    name: "Divider",
     depth: 0,
     blendMode: PIXI.BLEND_MODES.NORMAL,
     visible: true,
     baseClass: "AnimatedSprite",
     
-            texture: "Card",
+            texture: "DETAILER_DIVIDER_LINE",
         animationFPS: 30,
         playAnimationOnStart: false,
         loopAnimation: true,
@@ -5634,13 +5410,47 @@ templates.templates["Card"] = {
         
     },
     onDraw: function () {
-        /* template Card — core_OnDraw (On frame end event) */
+        
+    },
+    onDestroy: function () {
+        
+    },
+    onCreate: function () {
+        
+    },
+    extends: {}
+};
+templates.list['Divider'] = [];
+        
+templates.templates["TextButton"] = {
+    name: "TextButton",
+    depth: 0,
+    blendMode: PIXI.BLEND_MODES.NORMAL,
+    visible: true,
+    baseClass: "AnimatedSprite",
+    
+            texture: "TextButton",
+        animationFPS: 30,
+        playAnimationOnStart: false,
+        loopAnimation: true,
+    behaviors: JSON.parse('[]'),
+    onStep: function () {
+        
+    },
+    onDraw: function () {
+        /* template TextButton — core_OnDraw (On frame end event) */
 {
-// if (pointer.down[0] && this.getRoom().cards[this.getRoom().cards.length-1] == this && selected == this)
-// {
-//     this.position.x = pointer.x + this.offsetX;
-//     this.position.y = pointer.y + this.offsetY;
-// }
+if(pointer.collides(this) && !this.pressed)
+{
+    this.pressed = true;
+    console.log('clicked!');
+    window.open('https://nestlenutrition-institute.org/');
+}
+else if(!pointer.collides(this) && this.pressed)
+{
+    this.pressed = false;
+}
+
 }
 
     },
@@ -5648,134 +5458,26 @@ templates.templates["Card"] = {
         
     },
     onCreate: function () {
-        /* template Card — core_OnCreate (On create event) */
+        /* template TextButton — core_OnCreate (On create event) */
 {
-this.target;
-
-this.offsetX;
-this.offsetY;
-
-this.defX = this.position.x;
-this.defY = this.position.y;
+this.pressed = false;
 }
-/* template Card — core_OnPointerDown (OnPointerDown event) */
-this.eventMode = 'dynamic';
-this.on('pointerdown', () => {
-    
-// if(this.getRoom().cards[this.getRoom().cards.length-1] == this)
-// {
-//     selected = this;
-//     this.depth = 5;
-
-//     this.offsetX = this.position.x - pointer.x;
-//     this.offsetY = this.position.y - pointer.y;
-
-//     ct.tween.add({
-//         obj: this.scale,
-//         fields: {
-//             x: .5,
-//             y: .5
-//         },
-//         duration: 75,
-//         silent: true
-//     });
-// }
-
-});
-/* template Card — core_OnPointerUp (OnPointerUp event) */
-this.eventMode = 'dynamic';
-this.on('pointerup', () => {
-    
-// if(this.getRoom().cards[this.getRoom().cards.length-1] == this)
-// {   
-//     selected = null;
-
-//     let destX = this.target.x;
-//     let destY = this.target.y;
-
-//     let distance = Math.abs((this.position.x - destX) + (this.position.y - destY)); 
-
-//     if(distance < 100)
-//     {
-//         this.correct = true;
-//         this.position.x = destX;
-//         this.position.y = destY;
-//         ct.tween.add({
-//             obj: this.scale,
-//             fields: {
-//                 x: 0.5,
-//                 y: 0.5
-//             },
-//             duration: 75,
-//             silent: true
-//         }).then(() =>{
-//             ct.tween.add({
-//                 obj: this.scale,
-//                 fields: {
-//                     x: 0.6,
-//                     y: 0.22
-//                 },
-//                 duration: 6,
-//                 silent: true
-//             }).then(() =>{
-//                 this.depth = 0;
-//                 UpdateCards(this.getRoom(), this);
-//             });
-//         });
-//     }
-//     else
-//     {
-//         ct.tween.add({
-//             obj: this.scale,
-//             fields: {
-//                 x: .75,
-//                 y: .75
-//             },
-//             duration: 75,
-//             silent: true
-//         });
-
-//         this.position.x = this.defX;
-//         this.position.y = this.defY;
-//     }
-// }
-
-});
-/* template Card — core_OnPointerUpOutside (OnPointerUpOutside event) */
-this.eventMode = 'dynamic';
-this.on('pointerupoutside', () => {
-    
-// if(selected)
-// {
-//     ct.tween.add({
-//         obj: this.scale,
-//         fields: {
-//             x: .75,
-//             y: .75
-//         },
-//         duration: 75,
-//         silent: true
-//     });
-
-//     this.position.x = this.defX;
-//     this.position.y = this.defY;
-// }
-
-});
 
     },
-    extends: {}
+    extends: {
+    "cgroup": "url"
+}
 };
-templates.list['Card'] = [];
+templates.list['TextButton'] = [];
         
-templates.templates["Body"] = {
-    name: "Body",
+templates.templates["ClickDetector"] = {
+    name: "ClickDetector",
     depth: 0,
     blendMode: PIXI.BLEND_MODES.NORMAL,
     visible: true,
     baseClass: "AnimatedSprite",
     
-            texture: "Body_Icon",
+            texture: "Placeholder",
         animationFPS: 30,
         playAnimationOnStart: false,
         loopAnimation: true,
@@ -5794,67 +5496,11 @@ templates.templates["Body"] = {
     },
     extends: {}
 };
-templates.list['Body'] = [];
+templates.list['ClickDetector'] = [];
         
-templates.templates["Brain"] = {
-    name: "Brain",
+templates.templates["CutBG"] = {
+    name: "CutBG",
     depth: 0,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "Brain_Icon",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['Brain'] = [];
-        
-templates.templates["Energy"] = {
-    name: "Energy",
-    depth: 0,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "Energy_Icon",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['Energy'] = [];
-        
-templates.templates["BG"] = {
-    name: "BG",
-    depth: 53,
     blendMode: PIXI.BLEND_MODES.NORMAL,
     visible: true,
     baseClass: "AnimatedSprite",
@@ -5878,109 +5524,7 @@ templates.templates["BG"] = {
     },
     extends: {}
 };
-templates.list['BG'] = [];
-        
-templates.templates["GameBG"] = {
-    name: "GameBG",
-    depth: 0,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "NESTO_GAME_BG",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['GameBG'] = [];
-        
-templates.templates["ScrollParent"] = {
-    name: "ScrollParent",
-    depth: 52,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: -1,
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['ScrollParent'] = [];
-        
-templates.templates["Black_dup"] = {
-    name: "Black_dup",
-    depth: 55,
-    blendMode: PIXI.BLEND_MODES.NORMAL,
-    visible: true,
-    baseClass: "AnimatedSprite",
-    
-            texture: "Black",
-        animationFPS: 30,
-        playAnimationOnStart: false,
-        loopAnimation: true,
-    behaviors: JSON.parse('[]'),
-    onStep: function () {
-        
-    },
-    onDraw: function () {
-        /* template Black_dup — core_OnDraw (On frame end event) */
-{
-if (pointer.collides(this) && !this.getRoom().pressed && !this.getRoom().scrolling) {
-    this.getRoom().pressed = true;
-    tween.add({
-        obj: rooms.current,
-        fields: {
-            alpha: 0
-        },
-        duration: 250,
-        silent: true
-    })
-    .then(() => {
-       rooms.switch('Game');
-
-    });
-}
-}
-
-    },
-    onDestroy: function () {
-        
-    },
-    onCreate: function () {
-        
-    },
-    extends: {}
-};
-templates.list['Black_dup'] = [];
+templates.list['CutBG'] = [];
         
     
     
@@ -5989,8 +5533,8 @@ rooms.templates['Game'] = {
     width: 720,
     height: 1280,
     behaviors: JSON.parse('[]'),
-    objects: JSON.parse('[{"x":360,"y":96,"opacity":1,"tint":16777215,"scale":{"x":0.2,"y":0.2},"rotation":0,"exts":{},"customProperties":{},"template":"Logo"},{"x":360,"y":704,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"GameBG"}]'),
-    bgs: JSON.parse('[{"texture":"BG","depth":-1,"exts":{"movementX":0,"movementY":0,"parallaxX":1,"parallaxY":1,"repeat":"no-repeat","scaleX":0.46,"scaleY":0.46,"shiftX":0,"shiftY":0}}]'),
+    objects: JSON.parse('[{"x":360,"y":96,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Logo"}]'),
+    bgs: JSON.parse('[{"texture":"BG","depth":0,"exts":{"movementX":0,"movementY":0,"parallaxX":1,"parallaxY":1,"repeat":"no-repeat","scaleX":0.46,"scaleY":0.46,"shiftX":0,"shiftY":0}}]'),
     tiles: JSON.parse('[]'),
     backgroundColor: '#212121',
     
@@ -6000,35 +5544,31 @@ rooms.templates['Game'] = {
 if (this.timer1 > 0 && this.timer1 <= (false ? u.timeUi : u.time)) {
     this.timer1 = 0;
     
-this.timer1 = 1;
-
 this.remainingTime--;
 
 if(this.remainingTime >= 10)
 {
-    this.timerLabel.text = '00:' + this.remainingTime;
+    timerText.text = '00:'+this.remainingTime+'\nCOMPLETE THE SENTENCE';
     this.timer1 = 1;
 }
 else if(this.remainingTime < 10 && this.remainingTime > 0)
 {
-    this.timerLabel.text = '00:0'+this.remainingTime;
+    timerText.text = '00:0'+this.remainingTime+'\nCOMPLETE THE SENTENCE';
     this.timer1 = 1;
 }
-else if(this.remainingTime <= 0)
+else
 {
-    this.timerLabel.text = '00:0'+this.remainingTime;
     var again = rooms.append('Try Again');
-    this.timer1 = 0; 
-    again.alpha = 0;
-    pointer.clear();
-    tween.add({
-        obj: again,
-        fields:{
-            alpha: 1
-        },
-        duration: 250,
-        silent: true
-    });
+        again.alpha = 0;
+        tween.add({
+            obj: again,
+            fields:{
+                alpha: 1
+            },
+            duration: 250,
+            silent: true
+        });
+    this.timer1 = 0;
 }
 
 } else {
@@ -6045,202 +5585,77 @@ else if(this.remainingTime <= 0)
     onCreate() {
         /* room Game — core_OnRoomStart (On room start event) */
 {
-this.cards = [];
-this.box = [];
-this.remainingTime = 30;
+this.pieces = [null,null,null,null,null,null,null,null,null];
+this.remainingTime = 40;
+this.letters = [];
+this.placedLetter = [];
 
-this.cardSet = redCards.concat(greenCards,orangeCards);
+timerText = new PIXI.Text('00:40\nCOMPLETE THE SENTENCE', styles.get('RG-Bold'));
+this.addChild(timerText);
 
-for(let i = this.cardSet.length - 1;i > 0;i--)
-{
-    var item = Math.floor(Math.random() * (i-1));
-    var temp = this.cardSet[i];
-    this.cardSet[i] = this.cardSet[item];
-    this.cardSet[item] = temp; 
-}
+questionText = new PIXI.Text(question[progress], styles.get('Geist-Regular')); 
+this.addChild(questionText);
 
-const primaryGreen = 0x93DA77;
-const primaryOrange = 0xFEA958;
-const primaryRed = 0xFF9F94;
+progress = 0;
+whites = new Array();
+letterIndex = 0;
 
 // === SPAWNING HERE ===
 
-var box1 = templates.copy('GREEN_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP', 360, 1000);
-box1.scale.x = box1.scale.y = 0.175;
-box1.depth = 3;
-box1.countText = this.counter1 = new PIXI.Text('0', styles.get('RG-Bold')); 
-box1.addChild(this.counter1);
-this.counter1.y = 300;
-this.counter1.scale.x = this.counter1.scale.y = 5;
-this.counter1.anchor.x = 0.5;
-this.counter1.anchor.y = 0.5;
-this.counter1.depth = 100;
-
-this.boxTitle1 = new PIXI.Text('BODY', styles.get('RG-Bold_Big'));
-box1.addChild(this.boxTitle1);
-this.boxTitle1.anchor.x = this.boxTitle1.anchor.y = 0.5;
-this.boxTitle1.scale.x = this.boxTitle1.scale.y = 2;
-this.box.push(box1);
-
-
-var box2 = templates.copy('ORANGE_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP', 520, 1000);
-box2.scale.x = box2.scale.y = 0.175;
-box2.depth = 3;
-box2.countText = this.counter2 = new PIXI.Text('0', styles.get('RG-Bold')); 
-box2.addChild(this.counter2);
-this.counter2.y = 300;
-this.counter2.scale.x = this.counter2.scale.y = 5;
-this.counter2.anchor.x = 0.5;
-this.counter2.anchor.y = 0.5;
-this.counter2.depth = 100;
-
-this.boxTitle2 = new PIXI.Text('ENERGY', styles.get('RG-Bold_Big'));
-box2.addChild(this.boxTitle2);
-this.boxTitle2.anchor.x = this.boxTitle2.anchor.y = 0.5;
-this.boxTitle2.scale.x = this.boxTitle2.scale.y = 2;
-this.box.push(box2);
-
-var box3 = templates.copy('RED_BOX-NESTO_ACTIVITY-MSN_RESIDENTS_WORKSHOP', 200, 1000);
-box3.scale.x = box3.scale.y = 0.175;
-box3.depth = 3;
-box3.countText = this.counter3 = new PIXI.Text('0', styles.get('RG-Bold')); 
-box3.addChild(this.counter3);
-this.counter3.y = 300;
-this.counter3.scale.x = this.counter3.scale.y = 5;
-this.counter3.anchor.x = 0.5;
-this.counter3.anchor.y = 0.5;
-this.counter3.depth = 100;
-
-this.boxTitle3 = new PIXI.Text('BRAIN', styles.get('RG-Bold_Big'));
-box3.addChild(this.boxTitle3);
-this.boxTitle3.anchor.x = this.boxTitle3.anchor.y = 0.5;
-this.boxTitle3.scale.x = this.boxTitle3.scale.y = 2;
-this.box.push(box3);
-
-for(let i = 0;i < this.cardSet.length;i++)
+for(let i = 0;i < words.length;i++)
 {
-    let c = null;
-    let target = null;
-    let icon = null;
-
-    if(orangeCards.includes(this.cardSet[i]))
+    var w = new Array();
+    for(let j = 0;j < words[i].length;j++)
     {
-        c = primaryOrange;
-        target = this.box[1];
-        icon = 'Energy';
+        var multiplier = 55*j;
+        switch (i)
+        {
+            case 0:
+                var b = templates.copy('White',140, 428+multiplier);
+                b.scale.x = b.scale.y = 0.125;
+                w.push(b);
+            break;
+            case 1:
+                var b = templates.copy('White', 305+multiplier, 758);
+                b.scale.x = b.scale.y = 0.125;
+                w.push(b);
+            break;
+            case 2:
+                if(j!=0)
+                {
+                    var b = templates.copy('White', 140+multiplier, 538);
+                    b.scale.x = b.scale.y = 0.125;
+                    w.push(b);
+                }
+            break;
+            case 3:
+                if(j != 0 && j != 4)
+                {
+                    var b = templates.copy('White', 470, 538+multiplier);
+                    b.scale.x = b.scale.y = 0.125;
+                    w.push(b);
+                }
+            break;
+            case 4:
+                if(j != 1)
+                {
+                    var b = templates.copy('White', 85+multiplier, 428);
+                    b.scale.x = b.scale.y = 0.125;
+                    w.push(b);
+                }
+            break;
+        }
     }
-    else if(redCards.includes(this.cardSet[i]))
-    {    
-        c = primaryRed;
-        target = this.box[2];
-        icon = 'Brain';
-    }
-    else if(greenCards.includes(this.cardSet[i]))
-    {
-        c = primaryGreen;
-        target = this.box[0];
-        icon = 'Body';
-    }
-    
-    if(i == 27 - 2)
-    {
-        var card = templates.copy('Card', 360, 520)
-        card.scale.x = card.scale.y = .75;
-        card.depth = 4;
-        card.angle = 5;
-        card.tint = c;
-        card.target = target;
 
-        var cardText = new PIXI.Text(this.cardSet[i], styles.get('RG-Bold')); 
-        card.addChild(cardText);
-        cardText.anchor.x = cardText.anchor.y = 0.5;
-        cardText.scale.x = cardText.scale.y = 1.75;
-
-        var iconCopy = templates.copy(icon, 110,-225)
-        card.addChild(iconCopy);
-        iconCopy.scale.x = iconCopy.scale.y = .1;
-
-        this.cards.push(card);
-    }
-    else if(i == 27 - 1)
-    {
-        var card = templates.copy('Card', 360, 550)
-        card.scale.x = card.scale.y = .75;
-        card.depth = 5;
-        card.angle = 15;
-        card.tint = c;
-        card.target = target;
-
-        var cardText = new PIXI.Text(this.cardSet[i], styles.get('RG-Bold')); 
-        card.addChild(cardText);
-        cardText.anchor.x = cardText.anchor.y = 0.5;
-        cardText.scale.x = cardText.scale.y = 1.75;
-
-        var iconCopy = templates.copy(icon, 110,-225)
-        card.addChild(iconCopy);
-        iconCopy.scale.x = iconCopy.scale.y = .1;
-
-        this.cards.push(card);
-    }
-    else if(i == 27 - 3)
-    {
-        var card = templates.copy('Card', 360, 520)
-        card.scale.x = card.scale.y = .75;
-        card.depth = 3;
-        card.angle = 350;
-        card.tint = c;
-        card.target = target;
-
-        var cardText = new PIXI.Text(this.cardSet[i], styles.get('RG-Bold')); 
-        card.addChild(cardText);
-        cardText.anchor.x = cardText.anchor.y = 0.5;
-        cardText.scale.x = cardText.scale.y = 1.75;
-
-        var iconCopy = templates.copy(icon, 110,-225)
-        card.addChild(iconCopy);
-        iconCopy.scale.x = iconCopy.scale.y = .1;
-
-        this.cards.push(card);
-    }
-    else
-    {
-        var card = templates.copy('Card', 360, 520)
-        card.scale.x = card.scale.y = .75;
-        card.depth = 2;
-        card.angle = 350;
-        card.alpha = 0;
-        card.tint = c;
-        card.target = target;
-
-        var cardText = new PIXI.Text(this.cardSet[i], styles.get('RG-Bold')); 
-        card.addChild(cardText);
-        cardText.anchor.x = cardText.anchor.y = 0.5;
-        cardText.scale.x = cardText.scale.y = 1.75;
-
-        var iconCopy = templates.copy(icon, 110,-225)
-        card.addChild(iconCopy);
-        iconCopy.scale.x = iconCopy.scale.y = .1;
-
-        this.cards.push(card);
-    }
+    whites.push(w);
 }
 
-// var l3 = templates.copy('Life',610, 210);
-// l3.depth = 100;
-// l3.scale.x = l3.scale.y = 0.15;
-// this.lives.push(l3);
-// this.lives.shift();
+// var tl = templates.copy('Top_Left', 576, 1152);
+// tl.scale.x = tl.scale.y = 0.22;
+// this.pieces.push(tl);
+// this.pieces.shift();
 
-// TIMER LABEL
-this.timerLabel = new PIXI.Text('00:'+this.remainingTime, styles.get('RG-Bold')); 
-this.addChild(this.timerLabel);
-this.timerLabel.x = 315;
-this.timerLabel.y = 160;
-this.timerLabel.depth = 100;
-
-this.timer1 = 1;
-
-
+ShowQuestion(this);
 }
 
     },
@@ -6257,7 +5672,7 @@ rooms.templates['Detailer'] = {
     width: 720,
     height: 1280,
     behaviors: JSON.parse('[]'),
-    objects: JSON.parse('[{"x":384,"y":640,"opacity":1,"tint":16777215,"scale":{"x":0,"y":0.22},"rotation":0,"exts":{},"customProperties":{},"template":"BG"},{"x":360,"y":709,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Detailer"},{"x":-21.24786377,"y":-3.91851807,"opacity":0,"tint":16777215,"scale":{"x":12,"y":3.35057418},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":-76.01629639,"y":-3.43322754,"opacity":0,"tint":16777215,"scale":{"x":1.9150273,"y":21},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":682.59434017,"y":-12.01629639,"opacity":0,"tint":16777215,"scale":{"x":1.7099727,"y":21},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":-100.18322754,"y":1208.01629639,"opacity":0,"tint":16777215,"scale":{"x":14,"y":3},"rotation":0,"exts":{},"customProperties":{},"template":"Black_dup"},{"x":360,"y":96,"opacity":1,"tint":16777215,"scale":{"x":0.2,"y":0.2},"rotation":0,"exts":{},"customProperties":{},"template":"Logo"},{"x":360,"y":640,"opacity":1,"tint":16777215,"scale":{"x":0.22855,"y":0.22855},"rotation":0,"exts":{},"customProperties":{},"template":"BG"}]'),
+    objects: JSON.parse('[{"x":360,"y":640,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"CutBG"},{"x":360,"y":96,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Logo"},{"x":360,"y":640,"opacity":1,"tint":16777215,"scale":{"x":1,"y":1},"rotation":0,"exts":{},"customProperties":{},"template":"Detailer"}]'),
     bgs: JSON.parse('[]'),
     tiles: JSON.parse('[]'),
     backgroundColor: '#212121',
@@ -6276,86 +5691,48 @@ rooms.templates['Detailer'] = {
 {
 pointer.clear();
 
-this.pressed = false;
-this.scrolling = false;
+// this.logo = templates.copy('Logo', 360, 250);
+// this.addChild(this.logo);
+// this.logo.scale.x = this.logo.scale.y = 1;
+// this.logo.depth = 5;
 
-this.minY = -100;
-this.maxY = 640;
-
-// MAIN SCROLL OBJECT
-this.scrollParent = templates.copy('ScrollParent', 360, 640);
-this.addChild(this.scrollParent);
-
-//LOGO
-this.logo = templates.copy('Logo', 0, -350);
-this.scrollParent.addChild(this.logo);
-this.logo.scale.x = this.logo.scale.y = 0.2;
-
-// NESTO LOGO
-this.nesto = templates.copy('NESTOLogo', 0, -190);
-this.scrollParent.addChild(this.nesto);
-this.nesto.scale.x = this.nesto.scale.y = 1;
-
-// HEAD
 this.head = new PIXI.Text('CONGRATULATIONS!', styles.get('RG-Bold_BigBlue'));
-this.scrollParent.addChild(this.head);
+this.addChild(this.head);
 this.head.anchor.x = this.head.anchor.y = 0.5;
 this.head.scale.x = this.head.scale.y = .6;
-this.head.y = -40;
+this.head.x = 360;
+this.head.y = 500;
+this.head.depth = 5;
 
-// DIVIDER
-this.divider = templates.copy('Div', 0, -5);
-this.scrollParent.addChild(this.divider);
+this.divider = templates.copy('Divider', 360, 535);
+this.addChild(this.divider);
 this.divider.anchor.x = this.divider.anchor.y = 0.5;
 this.divider.scale.x = this.divider.scale.y = 0.25;
+this.divider.depth = 5;
 
-// DESCRIPTION
-this.description = new PIXI.Text('You\'ve completed the NESTOGEN KID 3+ 27 nutrients that\nensures a child\'s BRAIN, BODY, and ENERGY is nourished\nduring early childhood!\n\nEarly childhood is crucial stage as it ensures\nthe foundation of not only their health but also their period\nof growth and development.\n\nCurrently, 4 out of 5 3-5 yo children may have hidden\nhunger or micronutrient deficiency that can hinder\ntheir development.\n\nDuring this period, children must be able to:', styles.get('Geist-Regular_Blue'));
-this.scrollParent.addChild(this.description);
+this.description = new PIXI.Text('You have unlocked the power of the NNI Website\nthat gives you access to the latest scientific infographics\nand articles, lectures, and insights from the global experts\nand collaborators!\n\nRegister now and join us as we bring nutrition to life\nfor those who live it!\n\nVisit the NNI Website Today!', styles.get('Geist-Regular_Blue'));
+this.addChild(this.description);
 this.description.anchor.x = 0.5;
 this.description.anchor.y = 0;
 this.description.scale.x = this.description.scale.y = 0.525;
-this.description.y = 10;
+this.description.x = 360;
+this.description.y = 550;
+this.description.depth = 5;
 
-// DETAIL 1
-this.d1 = templates.copy('Detailer1', -5, 450);
-this.scrollParent.addChild(this.d1);
-this.d1.anchor.x = this.d1.anchor.y = 0.5;
-this.d1.scale.x = this.d1.scale.y = 1;
+this.b = templates.copy('TextButton', 360, 825);
+this.addChild(this.b);
+this.b.depth = 5;
+this.b.alpha = 0;
 
-// DETAIL 2
-this.d2 = templates.copy('Detailer2', 10, 610);
-this.scrollParent.addChild(this.d2);
-this.d2.anchor.x = this.d2.anchor.y = 0.5;
-this.d2.scale.x = this.d2.scale.y = 1;
 
-// DETAIL 3
-this.d3 = templates.copy('Detailer3', -10, 780);
-this.scrollParent.addChild(this.d3);
-this.d3.anchor.x = this.d3.anchor.y = 0.5;
-this.d3.scale.x = this.d3.scale.y = 1;
+this.bText = new PIXI.Text('https://nestlenutrition-institute.org/', styles.get('RG-Bold_Blue'));
+this.addChild(this.bText);
+this.bText.x = this.b.x;
+this.bText.y = this.b.y;
+this.bText.scale.x = this.bText.scale.y = 0.9;
+this.bText.depth = 6;
+this.bText.anchor.x = this.bText.anchor.y = 0.5;
 
-// DESCRIPTION 2
-this.description2 = new PIXI.Text('Help support all of these aspects and more with NESTOGEN\nKID 3+ that contains TAPAT and SAPAT levels of 27 more\nnutrients to ensure age-appropriate nutrition and\nsupport a child\'s BRAIN, BODY, and ENERGY\nrequirements during early childhood.', styles.get('Geist-Regular_Blue'));
-this.scrollParent.addChild(this.description2);
-this.description2.anchor.x = 0.5;
-this.description2.anchor.y = 0;
-this.description2.scale.x = this.description2.scale.y = 0.525;
-this.description2.y = 880;
-
-// // DETAIL 4
-// this.d4 = templates.copy('Detailer4', 0, 1200);
-// this.scrollParent.addChild(this.d4);
-// this.d4.anchor.x = this.d4.anchor.y = 0.5;
-// this.d4.scale.x = this.d4.scale.y = 0.225;
-
-// DESCRIPTION 3
-this.description3 = new PIXI.Text('References:\nUNICEF. The state of the world\'s children 2019.\nExecutive Summary. Retrieved from:\nhttps://www.unicef.org/media/60811/file/\nSOWC-2019-Exec-summary.pdf', styles.get('Geist-Regular_Blue'));
-this.scrollParent.addChild(this.description3);
-this.description3.anchor.x = 0.5;
-this.description3.anchor.y = 0;
-this.description3.scale.x = this.description3.scale.y = 0.525;
-this.description3.y = 1100;
 }
 
     },
@@ -6372,7 +5749,7 @@ rooms.templates['Try Again'] = {
     width: 720,
     height: 1280,
     behaviors: JSON.parse('[]'),
-    objects: JSON.parse('[{"x":-64,"y":-64,"opacity":0.9,"tint":16777215,"scale":{"x":13,"y":22},"rotation":0,"exts":{},"customProperties":{},"template":"Black"}]'),
+    objects: JSON.parse('[{"x":-96.8125,"y":-64,"opacity":0.9,"tint":"#000000","scale":{"x":14,"y":23},"rotation":0,"exts":{},"customProperties":{},"template":"Placeholder"}]'),
     bgs: JSON.parse('[]'),
     tiles: JSON.parse('[]'),
     backgroundColor: '#212121',
@@ -6387,15 +5764,13 @@ if (pointer.down[0] && !this.pressed) {
     this.pressed = true;
     tween.add({
         obj: this,
-        fields: {
+        fields:{
             alpha: 0
         },
         duration: 250,
         silent: true
-    })
-    .then(() => {
-       rooms.switch('Game');
-
+    }).then(() =>{
+        rooms.switch('Game');
     });
 }
 }
@@ -6409,11 +5784,31 @@ if (pointer.down[0] && !this.pressed) {
 {
 pointer.clear();
 
-this.timerLabel = new PIXI.Text('TRY AGAIN', styles.get('RG-Bold_Big')); 
+this.timerLabel = new PIXI.Text('TRY AGAIN', styles.get('RG-Bold_BigGreen')); 
 this.addChild(this.timerLabel);
-this.timerLabel.x = 150;
+this.timerLabel.x = 360;
 this.timerLabel.y = 400;
+this.timerLabel.anchor.x = 0.5;
+this.timerLabel.anchor.y = 0.5;
 this.timerLabel.depth = 100;
+
+// TEST FOR CHILD OBJECT 
+// this.c = new PIXI.Text('W', styles.get('RG-Bold_BigBlue'));
+// this.timerLabel.addChild(this.c);
+// this.c.x = 0;
+// this.c.y = 0;
+// this.c.anchor.x = 0.5;
+// this.c.anchor.y = 0.5;
+// this.c.depth =150;
+
+// ct.tween.add({
+//     obj: this.timerLabel,
+//     fields: {
+//         x: 360,
+//         y: 800
+//     },
+//     duration: 5000
+// });
 }
 
     },
@@ -6425,13 +5820,13 @@ this.timerLabel.depth = 100;
     }
 }
         
-rooms.templates['Mechanic'] = {
-    name: 'Mechanic',
+rooms.templates['Mechanics'] = {
+    name: 'Mechanics',
     width: 720,
     height: 1280,
     behaviors: JSON.parse('[]'),
     objects: JSON.parse('[]'),
-    bgs: JSON.parse('[{"texture":"NESTO_GAME_MECHANICS_LIGHTBOX","depth":0,"exts":{"movementX":0,"movementY":0,"parallaxX":1,"parallaxY":1,"repeat":"no-repeat","scaleX":1,"scaleY":1,"shiftX":0,"shiftY":0}}]'),
+    bgs: JSON.parse('[{"texture":"NNI_MECHANICS_LIGHTBOX","depth":0,"exts":{"movementX":0,"movementY":0,"parallaxX":1,"parallaxY":1,"repeat":"no-repeat","scaleX":1,"scaleY":1,"shiftX":0,"shiftY":0}}]'),
     tiles: JSON.parse('[]'),
     backgroundColor: '#212121',
     
@@ -6439,21 +5834,19 @@ rooms.templates['Mechanic'] = {
         
     },
     onDraw() {
-        /* room Mechanic — core_OnDraw (On frame end event) */
+        /* room Mechanics — core_OnDraw (On frame end event) */
 {
 if (pointer.down[0] && !this.pressed) {
     this.pressed = true;
     tween.add({
         obj: this,
-        fields: {
+        fields:{
             alpha: 0
         },
         duration: 250,
         silent: true
-    })
-    .then(() => {
-       rooms.switch('Game');
-
+    }).then(() =>{
+        rooms.switch('Game');
     });
 }
 }
@@ -6463,7 +5856,7 @@ if (pointer.down[0] && !this.pressed) {
         
     },
     onCreate() {
-        /* room Mechanic — core_OnRoomStart (On room start event) */
+        /* room Mechanics — core_OnRoomStart (On room start event) */
 {
 this.pressed = false;
 }
@@ -8949,108 +8342,220 @@ const keyboard = (function ctKeyboard() {
     window.tween = tween;
 }
 
-  let selected = null;
+  let progress = 0;
 
-let orangeCards = ['BIOTIN', 'MANGANESE', 'PANTOTHENIC\nACID', 'NIACIN', 'VITAMIN\nB12', 'VITAMIN\nB6', 'VITAMIN\nB2', 'VITAMIN\nB1', 'IRON'];
-let greenCards = ['VITAMIN\nC', 'VITAMIN\nK', 'VITAMIN\nE', 'VITAMIN\nD', 'VITAMIN\nA', 'ZINC', 'SELENIUM', 'CHLORIDE', 'FOLIC\nACID', 'MAGNESIUM', 'PHOSPHORUS', 'CALCIUM', 'POTASSIUM', 'SODIUM'];
-let redCards = ['IODINE', 'COPPER', 'LA', 'ALA'];;
-function UpdateCards(room, card)
+let words = ['NUTRITION', 'WEBSITE', 'TECHNOLOGY', 'LIFESTYLE', 'KNOWLEDGE'];
+let question =['NNI provides health care professionals with access to the most\ncurrent and sound __________ information.',
+                'Among many others, the NNI __________ and app is a wealth of\ninformation that includes webinars, publication reviews, and Continuing\nProfessional Development (CPD) activities such as infographics and\nadditional educational material among many others.',
+                'NNI aims to connect scientists with __________ in an effort to expand\nthe boundaries of nutrition research, understanding, and application.',
+                'NNI\'s vision for health care providers is to empower them with\nknowledge, access, and __________ to promote good nutrition and\nhealthy lifestyles throughout the lifecycle of the populations\nthey are serving.',
+                'The Nestle Nutrition Institute believes that good nutrition begins\nbefore birth and is nurtured by the __________ and pure joy\nof eating good food.'];
+let positions = ['100,165,230,295,360,425,490,555,620',
+                 '165,230,295,360,425,490,555',
+                 '100,165,230,295,360,425,490,555,620',
+                 '165,230,295,360,425,490,555',
+                 '133,198,263,328,393,458,523,588'];
+let whites = [];
+
+let timerText;
+let questionText;
+let letterIndex = 0;
+let movingBlocks = false;;
+function ShowQuestion(room)
 {
-    for(let i = 0;i < room.box.length;i++)
+    // RESET TIMER;
+    room.remainingTime = 40;
+
+    // SET TEXTS HERE
+    timerText.text = '00:40\nCOMPLETE THE SENTENCE';
+    timerText.x = 360;
+    timerText.y = 200;
+    timerText.anchor.x = 0.5;
+    timerText.anchor.y = 0.5; 
+
+    questionText.text = question[progress];
+    questionText.x = 360;
+    questionText.y = 250;
+    questionText.anchor.x = 0.5;
+    questionText.anchor.y = 0;
+
+    // SET WHITES TO GREEN HERE
+    for(let i = 0;i < whites.length;i++)
     {
-        if(card.target == room.box[i])
+        for(let k = 0;k < whites[i].length;k++)
         {
-            room.box[i].count++;
-            room.box[i].countText.text = room.box[i].count + '';       
+            if(progress == i)
+            {
+                whites[i][k].tint = 0xA5FFEF;
+                whites[i][k].depth = 2;
+            }
+            else
+            {
+                whites[i][k].tint = 0xFFFFFF;
+                whites[i][k].depth = 1;
+            }
         }
     }
 
-    room.cards[room.cards.length-1].kill = true;
-    room.cards.pop();
-    if(room.cards.length > 0)
+    // REMOVE PREVIOUS LETTERS
+    if(room.letters.length > 0)
     {
-        for(let i = room.cards.length-1;i >= 0;i--)
+        for(let i = 0;i < room.letters.length;i++)
         {
-            let c = room.cards[i];
-
-            if(room.cards.length <=3)
-                c.alpha = 1;
-
-            c.defX = c.position.x;
-            c.defY = c.position.y;
-
-            if(i == room.cards.length-1)
-            {
-                let targetAngle = (i == 25) ? 15 : 380;
-
-                tween.add({
-                    obj: c,
-                    fields: {
-                        x: 360,
-                        y: 550,
-                        angle: targetAngle,
-                        depth: 5,
-                        alpha: 1
-                    },
-                    duration: 100,
-                    silent: true
-                }).then(() => {
-                    c.defX = c.position.x;
-                    c.defY = c.position.y;
-                });  
-            }
-            else if(i == room.cards.length-2)
-            {
-                tween.add({
-                    obj: c,
-                    fields: {
-                        x: 360,
-                        y: 520,
-                        angle: 365,
-                        depth: 4,
-                        alpha: 1
-                    },
-                    duration: 200,
-                    silent: true,
-                }).then(() => {
-                    c.defX = c.position.x;
-                    c.defY = c.position.y;
-                });  
-            }
-            else if(i == room.cards.length-3)
-            {
-                tween.add({
-                    obj: c,
-                    fields: {
-                        x: 360,
-                        y: 520,
-                        angle: 350,
-                        depth: 3,
-                        alpha: 1
-                    },
-                    duration: 100,
-                    silent: true
-                }).then(() => {
-                    c.defX = c.position.x;
-                    c.defY = c.position.y;
-                });  
-            }
+            room.letters[i].kill = true;
         }
     }
-    else
+
+    if(progress >= 5)
     {
-        var detail = rooms.append('Detailer');
-        room.timer1 = 0; 
-        detail.alpha = 0;
-        pointer.clear();
+        room.timer1 = 0;
+        var detailer = rooms.append('Detailer');
+        detailer.alpha = 0;
         tween.add({
-            obj: detail,
+            obj: detailer,
             fields:{
                 alpha: 1
             },
-            duration: 100,
+            duration: 250,
             silent: true
         });
+
+        return;
+    }
+
+    // SHUFFLE LETTER BANK
+    var arrayed = words[progress].split('');
+    if(progress == 2)
+    {
+        let found = arrayed.findIndex(v => v = 'T');
+        arrayed.splice(found, 1);
+    }
+    else if(progress == 3)
+    {
+        arrayed.splice(0, 1);
+        arrayed.splice(3, 1);
+
+        console.log(arrayed);
+    }
+    else if(progress == 4)
+    {
+        arrayed.splice(1,1);
+    }
+    
+    for(let i = arrayed.length - 1;i > 0;i--)
+    {
+        var item = Math.floor(Math.random() * (i-1));
+        var temp = arrayed[i];
+        arrayed[i] = arrayed[item];
+        arrayed[item] = temp; 
+    }
+
+    var size = positions[progress].split(',');
+
+    room.letters = new Array();
+    for(let i = 0;i < size.length;i++)
+    {
+        var letterBox = templates.copy('Letter', parseInt(size[i]), 1114);
+        letterBox.scale.x = letterBox.scale.y = 0.2;
+        letterBox.letter = arrayed[i];
+        letterBox.defX = letterBox.position.x;
+        letterBox.defY = letterBox.position.y;
+
+        this.letterText = new PIXI.Text(arrayed[i], styles.get('RG-Bold_BigLetter'));
+        letterBox.addChild(this.letterText);
+        this.letterText.anchor.x = this.letterText.anchor.y = 0.5;
+        room.letters.push(letterBox);
+    }
+
+    room.timer1 = 1;
+}
+
+function CheckAnswer(room)
+{
+    if(letterIndex >= whites[progress].length)
+    {
+        //CHECK ANSWER HERE;
+        let answer = room.placedLetter.toString().replaceAll(',','');
+
+        if(answer == words[progress] || answer == 'ECHNOLOGY' || answer == 'IFETYLE' || answer == 'KOWLEDGE')
+        {
+            console.log("Correct!");
+            letterIndex = 0;
+            progress++;
+            
+            let charArr = [];
+            for(let i = 0;i < room.letters.length;i++)
+            {
+                tween.add({
+                    obj: room.letters[i].scale,
+                    fields: {
+                        x: 0.23,
+                        y: 0.23
+                    },
+                    duration:100,
+                    silent: true
+                }).then(()=>{
+                    tween.add({
+                        obj: room.letters[i].scale,
+                        fields: {
+                            x: 0.175,
+                            y: 0.175
+                        },
+                        duration:100,
+                        silent: true
+                        }).then(()=>{
+                            var placedText = new PIXI.Text(room.letters[i].letter, styles.get('RG-Bold_BigLetter'));
+                            room.addChild(placedText);
+                            placedText.scale.x = placedText.scale.y = 0.15;
+                            placedText.anchor.x = 0.5;
+                            placedText.anchor.y = 0.5;
+                            placedText.position.x = room.letters[i].position.x;
+                            placedText.position.y = room.letters[i].position.y;
+                            charArr.push(placedText);
+                    });  
+                });
+            }
+            setTimeout(() =>
+            {
+                for(let i = 0;i < charArr.length;i++)
+                    charArr[i].tint = 0x1A1B38;
+                ShowQuestion(room);
+            }, 500);
+        }
+        else
+        {
+            letterIndex = 0;
+
+            for(let i = 0;i < whites[progress].length;i++)
+            {
+                whites[progress][i].tint = 0xF9CECE;
+            }
+            for(let i = 0;i < room.letters.length;i++)
+            {
+                tween.add({
+                    obj: room.letters[i],
+                    fields: {
+                        x: room.letters[i].defX,
+                        y: room.letters[i].defY
+                    },
+                    duration:100,
+                    silent: true
+                }).then(()=>{
+                    room.letters[i].moved = false;
+                    room.letters[i].scale.x = room.letters[i].scale.y = 0.2;
+                });  
+            }
+
+            setTimeout(() =>
+            {
+                for(let i = 0;i < whites[progress].length;i++)
+                {
+                    whites[progress][i].tint = 0xA5FFEF;
+                }
+            }, 500);
+        }
+
+        room.placedLetter = new Array();
     }
 };
 

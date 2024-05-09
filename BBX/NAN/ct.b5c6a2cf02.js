@@ -4068,7 +4068,8 @@ if (!this.kill) {
 
     },
     afterDraw() {
-      for (const p of pointer.down) {
+      keyboard.clear();
+for (const p of pointer.down) {
     p.xprev = p.x;
     p.yprev = p.y;
     p.xuiprev = p.x;
@@ -4083,7 +4084,6 @@ for (const p of pointer.hover) {
 inputs.registry['pointer.Wheel'] = 0;
 pointer.clearReleased();
 pointer.xmovement = pointer.ymovement = 0;
-keyboard.clear();
 
       if (this.behaviors.length) {
         runBehaviors(this, "rooms", "thisOnDraw");
@@ -6418,13 +6418,13 @@ this.maxY = 640;
 this.scrollParent = templates.copy('ScrollParent', 360, 640);
 this.addChild(this.scrollParent);
 
-// LOGO
-this.logo = templates.copy('Logo', 0, -350);
-this.scrollParent.addChild(this.logo);
-this.logo.scale.x = this.logo.scale.y = 1;
+// // LOGO
+// this.logo = templates.copy('Logo', 0, -350);
+// this.scrollParent.addChild(this.logo);
+// this.logo.scale.x = this.logo.scale.y = 1;
 
 // NANKID LOGO
-this.nankid = templates.copy('NANKIDLogo', 0, -200);
+this.nankid = templates.copy('NANKIDLogo', 0, -275);
 this.scrollParent.addChild(this.nankid);
 this.nankid.scale.x = this.nankid.scale.y = 1;
 
@@ -6433,10 +6433,10 @@ this.head = new PIXI.Text('CONGRATULATIONS!', styles.get('RG-Bold_BigBlue'));
 this.scrollParent.addChild(this.head);
 this.head.anchor.x = this.head.anchor.y = 0.5;
 this.head.scale.x = this.head.scale.y = .6;
-this.head.y = -50;
+this.head.y = -125;
 
 // DIVIDER
-this.divider = templates.copy('Div', 0, -15);
+this.divider = templates.copy('Div', 0, -90);
 this.scrollParent.addChild(this.divider);
 this.divider.anchor.x = this.divider.anchor.y = 0.5;
 this.divider.scale.x = this.divider.scale.y = 0.25;
@@ -6447,16 +6447,16 @@ this.scrollParent.addChild(this.description);
 this.description.anchor.x = 0.5;
 this.description.anchor.y = 0;
 this.description.scale.x = this.description.scale.y = 0.525;
-this.description.y = 0;
+this.description.y = -75;
 
 // DETAIL 1
-this.d1 = templates.copy('Detailer1', 5, 650);
+this.d1 = templates.copy('Detailer1', 5, 575);
 this.scrollParent.addChild(this.d1);
 this.d1.anchor.x = this.d1.anchor.y = 0.5;
 this.d1.scale.x = this.d1.scale.y = 1;
 
 // DETAIL 2
-this.d2 = templates.copy('Detailer2', 0, 1080);
+this.d2 = templates.copy('Detailer2', 0, 1005);
 this.scrollParent.addChild(this.d2);
 this.d2.anchor.x = this.d2.anchor.y = 0.5;
 this.d2.scale.x = this.d2.scale.y = 1;
